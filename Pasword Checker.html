@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>password</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+	font-family: "Arial", "Times New Roman";
+	font-size: 15px;
+	background-color:  #3973ac;
+	color: #003300;
+}
+
+#Label1{
+    height: 40px;
+    width: 50px;
+}
+</style>
+
+
+<script>
+function f1(){
+	var pr1 = document.getElementById("p1");
+        var p=pr1.value;
+        var specialCharacters= "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+        var Score=0;
+
+        for(var i=0; i<p.length;i++) {
+           if(specialCharacters.indexOf(p.charAt(i)) > -1){
+           Score +=20;
+                                     } 
+                                     }
+      if(/[a-z]/.test(p))
+       {
+          Score +=20;
+         }
+      if(/[A-Z]/.test(p))
+       {
+          Score +=20;
+         }
+      if(/[\d]/.test(p))
+       {
+          Score +=20;
+         }
+      if(p.length >=8)
+       {
+         Score +=20;
+       }
+     
+      var strength= "";
+      
+
+      if(Score >= 100) {
+         strength="Strong";
+        Label1.style.backgroundColor="green";
+        Label1.style.width="150px";
+       }
+      else if(Score >= 80) {
+         strength="Medium";
+         Label1.style.backgroundColor="yellow";
+         Label1.style.width="120px";
+       }
+       else if(Score >= 60) {
+         strength="Weak";
+         Label1.style.backgroundColor="orange";
+         Label1.style.width="100px";
+       }
+       else {
+         strength="Very Weak";
+         Label1.style.backgroundColor="red";
+         Label1.style.width="60px";
+        }
+    document.getElementById("Label1").innerHTML=strength;
+ 
+      
+}
+</script>
+</head>
+<body>
+
+<h2>Password Checker</h2>
+<form id="form1" runat="server">
+ <input type="password" name="p1" id="p1" onkeyup="f1()"></>
+ <div id="Label1"><div>	
+</form>
+</body>
+</html>
